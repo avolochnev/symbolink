@@ -11,7 +11,7 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
-    <td><%= link_to 'Show', user %></td>
+    <td><%= symbolink_to :show, user %></td>
     <td><%= symbolink_to :edit, edit_user_path(user), title: 'Edit' %></td>
     <td><%= symbolink_destroy user, data: { confirm: 'Are you sure?' }, title: 'Destroy' %></td>
   </tr>
