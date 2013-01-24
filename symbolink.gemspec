@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Symbolink::VERSION
   s.authors     = ["Alexey Volochnev"]
   s.email       = ["alexey.volochnev@gmail.com"]
-  # s.homepage    = "TODO"
+  s.homepage    = "https://github.com/avolochnev/symbolink"
   s.summary     = "Use Unicode symbols as icons in rails application"
   s.description = "Allow to register unicode symbols and displays them as symbolic icons in rails application. Provides some helpers to generate the links by symbols."
 
