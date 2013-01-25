@@ -1,5 +1,11 @@
 module Symbolink
-  SYMBOLS = {
+  SYMBOLS = {}
+
+  def self.add_symbols(map = {})
+    map.each { |symbol, icon| SYMBOLS[symbol] = icon.html_safe }
+  end
+
+  add_symbols(
     delete:             '&#x2716;',
     add:                '&#x271A;',
     print:              '&#x2338;',
@@ -9,15 +15,13 @@ module Symbolink
     right_arrow:        '&#x226B;', # '&#x21D2;',
     double_right_arrow: '&#x22D9;', # '&#x21DB;',
     edit:               '&#x2328;',
-  }
+  )
 
-  def self.add_symbols(map = {})
-    SYMBOLS.merge!(map)
-  end
+  SYMBOLS.default_proc = ->(hash, key) { raise ArgumentError, "Unregistered symbolink #{key}" }
 
   module SymbolinkHelpers
     def symbol(sym)
-      (Symbolink::SYMBOLS[sym] || '').html_safe
+      SYMBOLS[sym]
     end
 
     def symbolink_to(sym, options = {}, html_options = {})
