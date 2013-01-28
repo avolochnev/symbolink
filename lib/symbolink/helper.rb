@@ -10,11 +10,12 @@ module Symbolink
     add:                '&#x271A;',
     print:              '&#x2338;',
     half:               '&#xBD;',
-    left_arrow:         '&#x226A;', # '&#x21D0;',
-    double_left_arrow:  '&#x22D8;', # '&#x21DA;',
-    right_arrow:        '&#x226B;', # '&#x21D2;',
-    double_right_arrow: '&#x22D9;', # '&#x21DB;',
+    left_arrow:         '&#x226A;',
+    double_left_arrow:  '&#x22D8;',
+    right_arrow:        '&#x226B;',
+    double_right_arrow: '&#x22D9;',
     edit:               '&#x2328;',
+    refresh:            '&#x27F2;',
   )
 
   SYMBOLS.default_proc = ->(hash, key) { raise ArgumentError, "Unregistered symbolink #{key}" }
