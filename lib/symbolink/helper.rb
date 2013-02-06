@@ -1,32 +1,25 @@
 module Symbolink
-  SYMBOLS = {}
-
-  def self.add_symbols(map = {})
-    map.each { |symbol, icon| SYMBOLS[symbol] = icon.html_safe }
-  end
-
-  add_symbols(
-    delete:             '&#x2716;',
-    add:                '&#x271A;',
-    print:              '&#x2338;',
-    half:               '&#xBD;',
-    left_arrow:         '&#x226A;',
-    double_left_arrow:  '&#x22D8;',
-    right_arrow:        '&#x226B;',
-    double_right_arrow: '&#x22D9;',
-    edit:               '&#x2328;',
-    refresh:            '&#x27F2;',
-  )
-
-  SYMBOLS.default_proc = ->(hash, key) { raise ArgumentError, "Unregistered symbolink #{key}" }
-
   module SymbolinkHelpers
+    def symbolicon(sym)
+      Symbolink.configuration.symbols[sym]
+    end
+
+    # @deprecate use symbolicon
     def symbol(sym)
-      SYMBOLS[sym]
+      symbolicon(sym)
     end
 
     def symbolink_to(sym, options = {}, html_options = {})
-      link_to(symbol(sym), options, html_options)
+      action = Symbolink.configuration.actions[sym]
+      if action
+        icon = action[:icon]
+        title = action[:title]
+      else
+        icon = sym
+        title = sym.to_s.humanize
+      end
+      html_options[:title] ||= title
+      link_to(symbolicon(icon), options, html_options)
     end
 
     def symbolink_destroy(options = {}, html_options = {})

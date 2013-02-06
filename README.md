@@ -35,8 +35,20 @@ Symbolink maps ruby symbols to fragmetns of HTML code. The following symbols are
 
 Add initializer to define custom symbols or override existing:
 
-    Symbolink.add_symbols leader:   '&#x265B;',
-                          employee: '&#x2659;'
+    Symbolink.configure do |config|
+      config.add_icons leader:   '&#x265B;',
+                       employee: '&#x2659;'
+    end
+
+## Define actions
+
+Action is a combination of icon + title. Actions may be defined as following:
+
+    Symbolink.configure do |config|
+      config.action :create, icon: :add, title: 'Create something'
+    end
+
+So symbolink_to(:create, model) will returns the link with icon defined as :add and title 'Create something'.
 
 
 
