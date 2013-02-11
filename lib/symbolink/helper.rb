@@ -22,9 +22,12 @@ module Symbolink
       end
       html_options[:title] ||= title
       if confirm
-
-        html_options[:'data-confirm'] = html_options[:confirm] if html_options[:confirm]
-        html_options[:'data-confirm'] ||= confirm
+        html_options[:data] ||= {}
+        %w{confirm data-confirm}.map(&:to_sym).select{ |opt| html_options[opt] }.each do |opt|
+          html_options[:data][:confirm] = html_options[opt]
+          html_options.delete(opt)
+        end
+        html_options[:data][:confirm] ||= confirm
       end
       link_to(symbolicon(icon), options, html_options)
     end
