@@ -49,6 +49,11 @@ describe Symbolink::SymbolinkHelpers do
           symbolink_to(:create, "/users", html_ops).should eq '<a href="/users" data-confirm="Confirm adding" title="Create">&#x2328;</a>'
         end
       end
+
+      it("ignore action confirmation if provided within html_options as data: { confirm: 'Text' }") do
+        html_ops = { data: { confirm: 'Confirm adding' } }
+        symbolink_to(:create, "/users", html_ops).should eq '<a href="/users" data-confirm="Confirm adding" title="Create">&#x2328;</a>'
+      end
     end
   end
 
