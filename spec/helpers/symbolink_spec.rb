@@ -36,6 +36,20 @@ describe Symbolink::SymbolinkHelpers do
         symbolink_to(:create, "/users", title: 'Add').should eq '<a href="/users" title="Add">&#x2328;</a>'
       end
     end
+
+    context 'with confirm' do
+      before { Symbolink.configuration.action(:create, icon: :edit, confirm: 'Sure?') }
+      it('returns link with confirmation') do
+        symbolink_to(:create, "/users").should eq '<a href="/users" data-confirm="Sure?" title="Create">&#x2328;</a>'
+      end
+
+      %w{confirm data-confirm}.each do |opt_name|
+        it("ignore action confirmation if provided within html_options as #{opt_name}") do
+          html_ops = { opt_name.to_sym => 'Confirm adding' }
+          symbolink_to(:create, "/users", html_ops).should eq '<a href="/users" data-confirm="Confirm adding" title="Create">&#x2328;</a>'
+        end
+      end
+    end
   end
 
   describe '#symbolink_destroy' do

@@ -53,5 +53,13 @@ describe Symbolink::Configuration do
       it { should be_a(Hash) }
       it('stores title') { subject[:title].should eq 'Custom create title' }
     end
+
+    context 'with confirm' do
+      before { c.action(:create, confirm: 'Sure?') }
+      subject { c.actions[:create] }
+
+      it { should be_a(Hash) }
+      it('stores confirmation') { subject[:confirm].should eq 'Sure?' }
+    end
   end
 end

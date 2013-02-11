@@ -1,5 +1,8 @@
 # Symbolink changelog
 
+## v.0.0.4
+- Allow define confirmation text for the action
+
 ## v0.0.3
 - Use Symbolink.configure rather then Symbolink.add_symbols
 - Allow define actions (icon + title)

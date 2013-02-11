@@ -25,6 +25,9 @@ module Symbolink
     #
     # - title: string to be used as link title
     # humanized action sysmbol will be used as a title if not provided
+    #
+    # - confirm: string to be used as action confirmation text
+    # data-confirm attribute will be added into the generated link if defined.
 	  def action(sym, ops = {})
 	  	ops[:icon] ||= sym
 	  	ops[:title] ||= sym.to_s.humanize

@@ -14,11 +14,18 @@ module Symbolink
       if action
         icon = action[:icon]
         title = action[:title]
+        confirm = action[:confirm]
       else
         icon = sym
         title = sym.to_s.humanize
+        confirm = nil
       end
       html_options[:title] ||= title
+      if confirm
+
+        html_options[:'data-confirm'] = html_options[:confirm] if html_options[:confirm]
+        html_options[:'data-confirm'] ||= confirm
+      end
       link_to(symbolicon(icon), options, html_options)
     end
 

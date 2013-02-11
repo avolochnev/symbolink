@@ -50,5 +50,12 @@ Action is a combination of icon + title. Actions may be defined as following:
 
 So symbolink_to(:create, model) will returns the link with icon defined as :add and title 'Create something'.
 
+It is possible to setup confirmation for the action:
+
+    Symbolink.configure do |config|
+      config.action :unsubscribe, icon: :delete, confirm: 'Are you sure?'
+    end
+
+So symbolink_to(:unsubscribe, unsubscribe_path) will return the link with data-confirm set to confirmation text.
 
 
