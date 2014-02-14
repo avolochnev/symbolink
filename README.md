@@ -1,5 +1,7 @@
 # Symbolink
 
+[![Gem Version](https://badge.fury.io/rb/symbolink.png)](http://badge.fury.io/rb/symbolink)
+
 Simple way to use Unicode symbols as icons in Rails application.
 
 ## Installation
