@@ -1,6 +1,10 @@
 # Symbolink changelog
 
 ## v.0.0.5
+- Upgrade to Rails 4.2.
+- Upgrade to RSpec 3.5
+
+## v.0.0.5
 - Upgrade to Rails 4. For rails 3.x use v.0.0.4
 
 ## v.0.0.4

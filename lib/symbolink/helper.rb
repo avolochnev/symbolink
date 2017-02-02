@@ -1,5 +1,6 @@
 module Symbolink
   module SymbolinkHelpers
+    include ActionView::Helpers::UrlHelper
     def symbolicon(sym)
       Symbolink.configuration.symbols[sym]
     end
